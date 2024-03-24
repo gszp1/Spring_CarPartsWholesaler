@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,8 +18,23 @@ import java.math.BigDecimal;
 public class Part {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToMany
+    @JoinTable(
+            name = "parts_models",
+            joinColumns = @JoinColumn(name = "part_id"),
+            inverseJoinColumns = @JoinColumn(name = "model_id")
+    )
+    private List<CarModel> models;
+
+    @OneToMany(mappedBy = "part")
+    private List<OrderDetails> orderDetails;
 
     @Column(unique = true, nullable = false)
     private String name;
