@@ -33,6 +33,9 @@ public class Part {
     )
     private List<CarModel> models;
 
+    @OneToMany(mappedBy = "part")
+    private List<OrderDetails> orderDetails;
+
     @Column(unique = true, nullable = false)
     private String name;
 
