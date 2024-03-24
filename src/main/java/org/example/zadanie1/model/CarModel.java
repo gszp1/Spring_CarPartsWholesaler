@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,6 +19,9 @@ public class CarModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToMany(mappedBy = "models")
+    private List<Part> parts;
 
     @Column(unique = true, nullable = false)
     private String name;

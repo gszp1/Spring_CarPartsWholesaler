@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,6 +24,14 @@ public class Part {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToMany
+    @JoinTable(
+            name = "parts_models",
+            joinColumns = @JoinColumn(name = "part_id"),
+            inverseJoinColumns = @JoinColumn(name = "model_id")
+    )
+    private List<CarModel> models;
 
     @Column(unique = true, nullable = false)
     private String name;
