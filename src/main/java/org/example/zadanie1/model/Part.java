@@ -20,6 +20,10 @@ public class Part {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @Column(unique = true, nullable = false)
     private String name;
 
