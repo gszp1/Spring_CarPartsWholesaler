@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "order_details")
 public class OrderDetails {
-    
+
     private Long quantity;
 
     private BigDecimal unitPrice;
