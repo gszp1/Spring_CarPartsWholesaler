@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -34,4 +35,13 @@ public class User {
     private String email;
 
     private String phoneNumber;
+
+    public User(String username, String firstName, String surname, String email, String phoneNumber) {
+        this.username = username;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        orders = new ArrayList<>();
+    }
 }
