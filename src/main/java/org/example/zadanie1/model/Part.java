@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -36,10 +37,18 @@ public class Part {
     @OneToMany(mappedBy = "part")
     private List<OrderDetails> orderDetails;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String name;
 
     private BigDecimal unitPrice;
 
     private Long unitsInStock;
+
+    public Part(String name, BigDecimal unitPrice, Long unitsInStock) {
+        this.name = name;
+        this.unitPrice = unitPrice;
+        this.unitsInStock = unitsInStock;
+        models = new ArrayList<>();
+        orderDetails = new ArrayList<>();
+    }
 }
