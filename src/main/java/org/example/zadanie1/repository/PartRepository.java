@@ -7,5 +7,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface PartRepository extends CrudRepository<Part, Long> {
+
     List<Part> findByUnitPriceBetween(BigDecimal startPrice, BigDecimal endPrice);
 }
