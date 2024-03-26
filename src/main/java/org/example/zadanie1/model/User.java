@@ -24,16 +24,19 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String username;
 
+    @Column(length = 50)
     private String firstName;
 
+    @Column(length = 50)
     private String surname;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
 
+    @Column(length = 13)
     private String phoneNumber;
 
     public User(String username, String firstName, String surname, String email, String phoneNumber) {
