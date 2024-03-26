@@ -44,4 +44,12 @@ public class Order {
         this.status = status;
         orderDetails = new ArrayList<>();
     }
+
+    public Order(LocalDate placingDate, LocalDate deliveryDate, Integer status, User user) {
+        this.placingDate = placingDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+        this.user = user;
+        orderDetails = new ArrayList<>();
+    }
 }
