@@ -9,8 +9,6 @@ public class OrderRepositoryTests {
 
     OrderRepository orderRepository;
 
-    TestEntityManager entityManager;
-
     @Test
     public void countingTransactionsTest() {
         // Given:
