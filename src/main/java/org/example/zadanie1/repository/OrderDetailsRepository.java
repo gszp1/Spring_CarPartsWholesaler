@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OrderDetailsRepository extends CrudRepository<OrderDetails, Long> {
 
-    public Long countByPartName(String name);
+    Long countByPartName(String name);
 }
