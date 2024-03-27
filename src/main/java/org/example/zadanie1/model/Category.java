@@ -23,6 +23,6 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Part> parts;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String name;
 }

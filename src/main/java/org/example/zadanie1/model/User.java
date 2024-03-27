@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -23,15 +24,27 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String username;
 
+    @Column(length = 50)
     private String firstName;
 
+    @Column(length = 50)
     private String surname;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
 
+    @Column(length = 13)
     private String phoneNumber;
+
+    public User(String username, String firstName, String surname, String email, String phoneNumber) {
+        this.username = username;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        orders = new ArrayList<>();
+    }
 }

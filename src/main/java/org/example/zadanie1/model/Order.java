@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,10 +31,25 @@ public class Order {
     private List<OrderDetails> orderDetails;
 
     @Column(nullable = false)
-    private Date placingDate;
+    private LocalDate placingDate;
 
-    private Date deliveryDate;
+    private LocalDate deliveryDate;
 
     @Column(nullable = false)
     private Integer status;
+
+    public Order(LocalDate placingDate, LocalDate deliveryDate, Integer status) {
+        this.placingDate = placingDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+        orderDetails = new ArrayList<>();
+    }
+
+    public Order(LocalDate placingDate, LocalDate deliveryDate, Integer status, User user) {
+        this.placingDate = placingDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+        this.user = user;
+        orderDetails = new ArrayList<>();
+    }
 }
