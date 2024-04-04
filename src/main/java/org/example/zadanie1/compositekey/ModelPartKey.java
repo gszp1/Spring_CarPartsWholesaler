@@ -3,8 +3,6 @@ package org.example.zadanie1.compositekey;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
-import java.io.Serializable;
-
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -12,9 +10,9 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @ToString
 @Embeddable
-public class OrderDetailsKey implements Serializable {
+public class ModelPartKey {
 
-    private Long orderId;
+    private Long modelId;
 
     private Long partId;
 }

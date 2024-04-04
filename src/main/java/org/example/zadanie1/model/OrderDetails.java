@@ -1,24 +1,21 @@
 package org.example.zadanie1.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.zadanie1.compositekey.OrderDetailsKey;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-@Table(name = "order_details")
+@Table(name = "orders_details")
 public class OrderDetails {
 
     @EmbeddedId
-    private OrderDetailsKey id;
+    private OrderDetailsKey orderDetailsId;
 
     @ManyToOne
     @MapsId("partId")
@@ -32,6 +29,7 @@ public class OrderDetails {
 
     private Long quantity;
 
+    @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
 }

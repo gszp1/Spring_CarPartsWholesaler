@@ -10,17 +10,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@ToString
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "models")
+public class Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Long categoryId;
+    @Column(name = "model_id")
+    private Long modelId;
 
-    @OneToMany(mappedBy = "category")
-    private List<Part> parts = new ArrayList<>();
+    @OneToMany(mappedBy = "model")
+    private List<ModelPart> parts = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 50)
     private String name;
