@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "car_models")
+@Table(name = "models")
 public class Model {
 
     @Id
@@ -20,8 +20,8 @@ public class Model {
     @Column(name = "model_id")
     private Long modelId;
 
-    @OneToMany(mappedBy = "carModel")
-    private List<CarModelPart> parts = new ArrayList<>();
+    @OneToMany(mappedBy = "model")
+    private List<ModelPart> parts = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 50)
     private String name;

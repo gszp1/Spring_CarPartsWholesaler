@@ -2,7 +2,7 @@ package org.example.zadanie1.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.zadanie1.compositekey.CarModelPartKey;
+import org.example.zadanie1.compositekey.ModelPartKey;
 
 @Getter
 @Setter
@@ -10,11 +10,11 @@ import org.example.zadanie1.compositekey.CarModelPartKey;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "car_model_part")
-public class CarModelPart {
+@Table(name = "models_parts")
+public class ModelPart {
 
     @EmbeddedId
-    private CarModelPartKey id;
+    private ModelPartKey modelPartId;
 
     @ManyToOne
     @MapsId("partId")
@@ -23,6 +23,6 @@ public class CarModelPart {
 
     @ManyToOne
     @MapsId("modelId")
-    @JoinColumn(name = "car_model_car_model_id")
+    @JoinColumn(name = "model_model_id")
     private Model model;
 }

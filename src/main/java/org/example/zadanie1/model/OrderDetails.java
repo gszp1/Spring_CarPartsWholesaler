@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-@Table(name = "order_details")
+@Table(name = "orders_details")
 public class OrderDetails {
 
     @EmbeddedId

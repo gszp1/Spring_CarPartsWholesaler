@@ -57,14 +57,14 @@ public class OrderDetailsRepositoryTests {
         orderRepository.save(order2);
 
         // Create Order detail
-        OrderDetails orderDetails = new OrderDetails(new OrderDetailsKey(parts.getFirst().getId(), order.getId()),
+        OrderDetails orderDetails = new OrderDetails(new OrderDetailsKey(parts.getFirst().getPartId(), order.getOrderId()),
                 parts.getFirst(),
                 order,
                 3L,
                 parts.getFirst().getUnitPrice()
         );
         orderDetailsRepository.save(orderDetails);
-        OrderDetails orderDetails2 = new OrderDetails(new OrderDetailsKey(parts.getFirst().getId(), order2.getId()),
+        OrderDetails orderDetails2 = new OrderDetails(new OrderDetailsKey(parts.getFirst().getPartId(), order2.getOrderId()),
                 parts.getFirst(),
                 order2,
                 3L,

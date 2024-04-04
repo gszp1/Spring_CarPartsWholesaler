@@ -10,7 +10,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Embeddable
-public class CarModelPartKey {
+public class ModelPartKey {
 
     private Long modelId;
 

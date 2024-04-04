@@ -25,7 +25,7 @@ public class Part {
     private Category category;
 
     @OneToMany(mappedBy = "part")
-    private List<CarModelPart> carModels = new ArrayList<>();
+    private List<ModelPart> models = new ArrayList<>();
 
     @OneToMany(mappedBy = "part")
     private List<OrderDetails> orderDetails = new ArrayList<>();
