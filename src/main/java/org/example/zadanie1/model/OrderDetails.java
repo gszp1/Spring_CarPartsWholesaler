@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 public class OrderDetails {
 
     @EmbeddedId
-    private OrderDetailsKey id;
+    private OrderDetailsKey orderDetailsId;
 
     @ManyToOne
     @MapsId("partId")

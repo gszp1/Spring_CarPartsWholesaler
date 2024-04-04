@@ -16,7 +16,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "user_id")
+    private Long userId;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();

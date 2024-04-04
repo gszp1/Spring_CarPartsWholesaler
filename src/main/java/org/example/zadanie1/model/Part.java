@@ -17,7 +17,8 @@ public class Part {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "part_id")
+    private Long partId;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

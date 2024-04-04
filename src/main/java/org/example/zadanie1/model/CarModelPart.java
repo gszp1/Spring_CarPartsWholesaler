@@ -24,5 +24,5 @@ public class CarModelPart {
     @ManyToOne
     @MapsId("modelId")
     @JoinColumn(name = "car_model_car_model_id")
-    private CarModel carModel;
+    private Model model;
 }

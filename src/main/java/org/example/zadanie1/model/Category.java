@@ -16,7 +16,8 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "category_id")
+    private Long categoryId;
 
     @OneToMany(mappedBy = "category")
     private List<Part> parts = new ArrayList<>();

@@ -13,11 +13,12 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "car_models")
-public class CarModel {
+public class Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "model_id")
+    private Long modelId;
 
     @OneToMany(mappedBy = "carModel")
     private List<CarModelPart> parts = new ArrayList<>();
