@@ -18,5 +18,3 @@ public class OrderDetailsKey implements Serializable {
 
     private Long partId;
 }
-
-

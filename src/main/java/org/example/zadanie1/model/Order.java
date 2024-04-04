@@ -1,19 +1,15 @@
 package org.example.zadanie1.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
 @Table(name = "orders")
@@ -28,11 +24,12 @@ public class Order {
     private User user;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderDetails> orderDetails;
+    private List<OrderDetails> orderDetails = new ArrayList<>();
 
-    @Column(nullable = false)
+    @Column(name = "placing_date", nullable = false)
     private LocalDate placingDate;
 
+    @Column(name = "delivery_date")
     private LocalDate deliveryDate;
 
     @Column(nullable = false)
@@ -42,7 +39,6 @@ public class Order {
         this.placingDate = placingDate;
         this.deliveryDate = deliveryDate;
         this.status = status;
-        orderDetails = new ArrayList<>();
     }
 
     public Order(LocalDate placingDate, LocalDate deliveryDate, Integer status, User user) {
@@ -50,6 +46,5 @@ public class Order {
         this.deliveryDate = deliveryDate;
         this.status = status;
         this.user = user;
-        orderDetails = new ArrayList<>();
     }
 }

@@ -1,17 +1,16 @@
 package org.example.zadanie1.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "car_models")
 public class CarModel {
@@ -21,7 +20,7 @@ public class CarModel {
     private Long id;
 
     @ManyToMany(mappedBy = "models")
-    private List<Part> parts;
+    private List<Part> parts = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 50)
     private String name;
