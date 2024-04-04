@@ -23,13 +23,8 @@ public class Part {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany
-    @JoinTable(
-            name = "parts_models",
-            joinColumns = @JoinColumn(name = "part_id"),
-            inverseJoinColumns = @JoinColumn(name = "model_id")
-    )
-    private List<CarModel> models = new ArrayList<>();
+    @OneToMany(mappedBy = "part")
+    private List<CarModelPart> carModels = new ArrayList<>();
 
     @OneToMany(mappedBy = "part")
     private List<OrderDetails> orderDetails = new ArrayList<>();

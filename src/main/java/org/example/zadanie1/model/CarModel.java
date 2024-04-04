@@ -19,8 +19,8 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(mappedBy = "models")
-    private List<Part> parts = new ArrayList<>();
+    @OneToMany(mappedBy = "carModel")
+    private List<CarModelPart> parts = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 50)
     private String name;
