@@ -2,6 +2,7 @@ package org.example.zadanie1.repository;
 
 import jakarta.transaction.Transactional;
 import org.example.zadanie1.model.Order;
+import org.example.zadanie1.model.OrderDetails;
 import org.example.zadanie1.model.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -66,8 +67,26 @@ public class OrderRepositoryTests {
     }
 
     @Test
-    public void ordersAndUsersInTables_CountOrdersByUserEmail_ReturnsCorrectNumberOfOrders() {
-        assertEquals(3, orderRepository.countByUserEmail("JohnTrevolta@gmail.com"));
-        assertEquals(1, orderRepository.countByUserEmail("SteveBlum@gmail.com"));
+    public void ordersAndUsersInTables_CountOrdersByUser_ReturnsCorrectNumberOfOrders() {
+        List<User> users = Arrays.asList(
+                new User(
+                        1L,
+                        "SteveBlum1",
+                        "Steve",
+                        "Blum",
+                        "SteveBlum@gmail.com",
+                        "111222333"
+                ),
+                new User(
+                        2L,
+                        "JohnTrevolta1",
+                        "John",
+                        "Trevolta",
+                        "JohnTrevolta@gmail.com",
+                        "222333444"
+                )
+        );
+        assertEquals(3, orderRepository.countByUser(users.get(1)));
+        assertEquals(1, orderRepository.countByUser(users.get(0)));
     }
 }
