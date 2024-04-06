@@ -52,11 +52,11 @@ public class OrderDetailsRepositoryTests {
     }
 
     private void populateOrderDetailsTable() {
-        Optional<Order> firstOrder = orderRepository.findFirst();
+        Optional<Order> firstOrder = orderRepository.findById(1L);
         if (firstOrder.isEmpty()) {
             return;
         }
-        Optional<Part> firstPart = partRepository.findFirst();
+        Optional<Part> firstPart = partRepository.findById(1L);
         if (firstPart.isEmpty()) {
             return;
         }
