@@ -32,4 +32,10 @@ public class OrderDetails {
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
+    public OrderDetails(Part part, Order order, Long quantity, BigDecimal unitPrice) {
+        this.part = part;
+        this.order = order;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
 }
