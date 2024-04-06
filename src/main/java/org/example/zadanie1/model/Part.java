@@ -6,11 +6,13 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "parts")
 public class Part {
@@ -43,5 +45,26 @@ public class Part {
         this.name = name;
         this.unitPrice = unitPrice;
         this.unitsInStock = unitsInStock;
+    }
+
+    public Part(Long partId, String name, BigDecimal unitPrice, Long unitsInStock) {
+        this.partId = partId;
+        this.name = name;
+        this.unitPrice = unitPrice;
+        this.unitsInStock = unitsInStock;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Part part = (Part) o;
+        return Objects.equals(partId, part.partId)
+                && Objects.equals(category, part.category)
+                && Objects.equals(models, part.models)
+                && Objects.equals(orderDetails, part.orderDetails)
+                && Objects.equals(name, part.name)
+                && Objects.equals(unitPrice, part.unitPrice)
+                && Objects.equals(unitsInStock, part.unitsInStock);
     }
 }
