@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "users")
 public class User {
@@ -38,6 +40,15 @@ public class User {
     private String phoneNumber;
 
     public User(String username, String firstName, String surname, String email, String phoneNumber) {
+        this.username = username;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public User(Long userId, String username, String firstName, String surname, String email, String phoneNumber) {
+        this.userId = userId;
         this.username = username;
         this.firstName = firstName;
         this.surname = surname;
