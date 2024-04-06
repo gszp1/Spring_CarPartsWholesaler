@@ -1,7 +1,6 @@
 package org.example.zadanie1.repository;
 
 import jakarta.transaction.Transactional;
-import org.checkerframework.checker.units.qual.A;
 import org.example.zadanie1.compositekey.OrderDetailsKey;
 import org.example.zadanie1.model.Order;
 import org.example.zadanie1.model.OrderDetails;
@@ -9,8 +8,6 @@ import org.example.zadanie1.model.Part;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
