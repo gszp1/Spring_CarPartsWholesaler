@@ -12,6 +12,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "parts")
@@ -52,19 +53,5 @@ public class Part {
         this.name = name;
         this.unitPrice = unitPrice;
         this.unitsInStock = unitsInStock;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Part part = (Part) o;
-        return Objects.equals(partId, part.partId)
-                && Objects.equals(category, part.category)
-                && Objects.equals(models, part.models)
-                && Objects.equals(orderDetails, part.orderDetails)
-                && Objects.equals(name, part.name)
-                && Objects.equals(unitPrice, part.unitPrice)
-                && Objects.equals(unitsInStock, part.unitsInStock);
     }
 }
