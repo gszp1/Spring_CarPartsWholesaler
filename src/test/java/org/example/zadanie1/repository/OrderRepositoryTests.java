@@ -1,8 +1,10 @@
 package org.example.zadanie1.repository;
 
 import jakarta.transaction.Transactional;
+import org.checkerframework.checker.units.qual.A;
 import org.example.zadanie1.model.Order;
 import org.example.zadanie1.model.OrderDetails;
+import org.example.zadanie1.model.Part;
 import org.example.zadanie1.model.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +29,12 @@ public class OrderRepositoryTests {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PartRepository partRepository;
+
+    @Autowired
+    private OrderDetailsRepository orderDetailsRepository;
 
     @BeforeEach
     public void populateTables() {
@@ -51,7 +60,16 @@ public class OrderRepositoryTests {
             orders.add(new Order(LocalDate.now(), LocalDate.now().plusDays(i), 1, users.get(1)));
         }
         orders.add(new Order(LocalDate.now(), LocalDate.now().plusDays(4), 1, users.getFirst()));
+        Part part = new Part("Oil Filter", new BigDecimal("22.5"), 10L);
+        Order order = new Order(LocalDate.now(), LocalDate.now().plusDays(3), 1, users.get(1));
+        OrderDetails orderDetails = new OrderDetails(part, order, 1L, part.getUnitPrice());
+        part.getOrderDetails().add(orderDetails);
+        order.getOrderDetails().add(orderDetails);
+        partRepository.save(part);
+        orders.add(order);
         orderRepository.saveAll(orders);
+        orderDetailsRepository.save(orderDetails);
+
     }
 
 
@@ -88,5 +106,10 @@ public class OrderRepositoryTests {
         );
         assertEquals(3, orderRepository.countByUser(users.get(1)));
         assertEquals(1, orderRepository.countByUser(users.get(0)));
+    }
+
+    @Test
+    public void orderedProductExists_CountOrderedProductWithGivenName_ReturnsCorrectNumberOfOrderedProducts() {
+        assertEquals(1L, orderRepository.countByOrderDetailsPartName("Oil Filter"));
     }
 }

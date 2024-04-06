@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Long countByUser(User user);
+
+    Long countByOrderDetailsPartName(String name);
 }
