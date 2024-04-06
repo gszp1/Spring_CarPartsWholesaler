@@ -33,6 +33,7 @@ public class OrderDetails {
     private BigDecimal unitPrice;
 
     public OrderDetails(Part part, Order order, Long quantity, BigDecimal unitPrice) {
+        this.orderDetailsId = new OrderDetailsKey(order.getOrderId(), part.getPartId());
         this.part = part;
         this.order = order;
         this.quantity = quantity;

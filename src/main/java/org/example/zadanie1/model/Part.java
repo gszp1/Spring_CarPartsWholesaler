@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "parts")
 public class Part {
@@ -40,6 +42,13 @@ public class Part {
     private Long unitsInStock;
 
     public Part(String name, BigDecimal unitPrice, Long unitsInStock) {
+        this.name = name;
+        this.unitPrice = unitPrice;
+        this.unitsInStock = unitsInStock;
+    }
+
+    public Part(Long partId, String name, BigDecimal unitPrice, Long unitsInStock) {
+        this.partId = partId;
         this.name = name;
         this.unitPrice = unitPrice;
         this.unitsInStock = unitsInStock;

@@ -6,6 +6,7 @@ import org.example.zadanie1.model.OrderDetails;
 import org.example.zadanie1.model.Part;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +14,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
@@ -63,12 +66,11 @@ public class OrderDetailsRepositoryTests {
         orderDetailsRepository.save(new OrderDetails(
                         firstPart.get(),
                         firstOrder.get(),
-                        1L,
+                        5L,
                         firstPart.get().getUnitPrice()
                 )
         );
     }
-
 
     @AfterEach
     public void cleanTables() {
@@ -76,4 +78,10 @@ public class OrderDetailsRepositoryTests {
         partRepository.deleteAll();
         orderRepository.deleteAll();
     }
+
+    @Test
+    public void orderDetailsInTable_CountOrderedProducts_CorrectNumberOfProducts() {
+        assertEquals(5L, orderDetailsRepository.sumOrderedParts("Oil Filter"));
+    }
+
 }

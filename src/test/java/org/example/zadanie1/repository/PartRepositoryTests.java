@@ -38,8 +38,7 @@ public class PartRepositoryTests {
     }
 
     @Test
-    public void getPartsByPriceRangeTest() {
-        // Retrieve parts and check if their prices are in given boundaries
+    public void partsInTable_FetchWithPriceWithinRange_AllPricesWithinRange() {
         BigDecimal leftBoundary = new BigDecimal("10");
         BigDecimal rightBoundary = new BigDecimal("30");
         List<Part> retrievedParts = partRepository

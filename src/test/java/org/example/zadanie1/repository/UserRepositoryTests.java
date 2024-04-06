@@ -3,10 +3,12 @@ package org.example.zadanie1.repository;
 import jakarta.transaction.Transactional;
 import org.example.zadanie1.model.User;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,41 +21,50 @@ public class UserRepositoryTests {
     @Autowired
     private UserRepository userRepository;
 
+    @BeforeEach
+    public void populateTable() {
+        userRepository.saveAll(Arrays.asList(
+                new User(
+                        "SteveBlum1",
+                        "Steve",
+                        "Blum",
+                        "SteveBlum@gmail.com",
+                        "111222333"
+                ),
+                new User(
+                        "JohnTrevolta1",
+                        "John",
+                        "Trevolta",
+                        "JohnTrevolta@gmail.com",
+                        "222333444"
+                ),
+                new User(
+                        "TomH1",
+                        "Tom",
+                        "Hanks",
+                        "TomHanks@gmail.com",
+                        "555666777"
+                ))
+        );
+    }
+
     @AfterEach
     public void cleanTable() {
         userRepository.deleteAll();
     }
 
     @Test
-    public void getUserByEmailTest() {
-        // Populate table with example users
-        User user1 = new User(
+    public void usersInTable_GetUserWithGivenEmail_FetchedUserEqualToExpected() {
+        User expectedUser = new User(
+                1L,
                 "SteveBlum1",
                 "Steve",
                 "Blum",
                 "SteveBlum@gmail.com",
                 "111222333"
         );
-        userRepository.save(user1);
-        User user = new User(
-                "JohnTrevolta1",
-                "John",
-                "Trevolta",
-                "JohnTrevolta@gmail.com",
-                "222333444"
-        );
-        userRepository.save(user);
-        user = new User(
-                "TomH1",
-                "Tom",
-                "Hanks",
-                "TomHanks@gmail.com",
-                "555666777"
-        );
-        userRepository.save(user);
-        // Retrieve user from database
-        Optional<User> retrievedUser = userRepository.findByEmail(user1.getEmail());
+        Optional<User> retrievedUser = userRepository.findByEmail(expectedUser.getEmail());
         assertTrue(retrievedUser.isPresent());
-        assertEquals(user1.getEmail(), retrievedUser.get().getEmail());
+        assertEquals(expectedUser, retrievedUser.get());
     }
 }
