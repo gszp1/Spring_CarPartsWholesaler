@@ -60,5 +60,6 @@ public class UserRepositoryTests {
         Optional<User> retrievedUser = userRepository.findByEmail(expectedUser.getEmail());
         assertTrue(retrievedUser.isPresent());
         assertEquals(expectedUser, retrievedUser.get());
+        retrievedUser.ifPresent(System.out::println);
     }
 }

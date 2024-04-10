@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@ToString
 @Table(name = "orders_details")
 public class OrderDetails {
 

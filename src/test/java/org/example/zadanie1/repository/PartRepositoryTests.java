@@ -40,5 +40,6 @@ public class PartRepositoryTests {
         assertEquals(2, retrievedParts.size());
         retrievedParts.forEach(part -> assertTrue((part.getUnitPrice().compareTo(leftBoundary) >= 0)
                 && (part.getUnitPrice().compareTo(rightBoundary) <= 0)));
+        retrievedParts.forEach(System.out::println);
     }
 }

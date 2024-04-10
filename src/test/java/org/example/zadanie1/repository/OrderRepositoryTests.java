@@ -72,7 +72,9 @@ public class OrderRepositoryTests {
 
     @Test
     public void ordersInTable_CountOrders_ReturnsCorrectNumberOfOrders() {
-        assertEquals(5L, orderRepository.count());
+        Long count = orderRepository.count();
+        assertEquals(5L, count);
+        System.out.println(count);
     }
 
     @Test
@@ -95,12 +97,17 @@ public class OrderRepositoryTests {
                         "222333444"
                 )
         );
-        assertEquals(4, orderRepository.countByUser(users.get(1)));
-        assertEquals(1, orderRepository.countByUser(users.get(0)));
+        Long count = orderRepository.countByUser(users.get(1));
+        assertEquals(4, count);
+        System.out.println(count);
+        assertEquals(1, count = orderRepository.countByUser(users.getFirst()));
+        System.out.println(count);
     }
 
     @Test
     public void orderedProductExists_CountOrderedProductWithGivenName_ReturnsCorrectNumberOfOrderedProducts() {
-        assertEquals(1L, orderRepository.countByOrderDetailsPartName("Oil Filter"));
+        Long count = orderRepository.countByOrderDetailsPartName("Oil Filter");
+        assertEquals(1L, count);
+        System.out.println(count);
     }
 }

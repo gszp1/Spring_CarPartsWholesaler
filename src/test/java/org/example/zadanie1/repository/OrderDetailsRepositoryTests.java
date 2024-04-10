@@ -73,7 +73,9 @@ public class OrderDetailsRepositoryTests {
 
     @Test
     public void orderDetailsInTable_CountOrderedProducts_CorrectNumberOfProducts() {
-        assertEquals(5L, orderDetailsRepository.sumOrderedParts("Oil Filter"));
+        Long count = orderDetailsRepository.sumOrderedParts("Oil Filter");
+        assertEquals(5L, count);
+        System.out.println(count);
     }
 
 }
