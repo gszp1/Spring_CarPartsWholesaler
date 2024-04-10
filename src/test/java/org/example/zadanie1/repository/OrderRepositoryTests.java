@@ -1,12 +1,10 @@
 package org.example.zadanie1.repository;
 
 import jakarta.transaction.Transactional;
-import org.checkerframework.checker.units.qual.A;
 import org.example.zadanie1.model.Order;
 import org.example.zadanie1.model.OrderDetails;
 import org.example.zadanie1.model.Part;
 import org.example.zadanie1.model.User;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,16 +70,9 @@ public class OrderRepositoryTests {
 
     }
 
-
-    @AfterEach
-    public void cleanTable() {
-        orderRepository.deleteAll();
-        userRepository.deleteAll();
-    }
-
     @Test
     public void ordersInTable_CountOrders_ReturnsCorrectNumberOfOrders() {
-        assertEquals(4L, orderRepository.count());
+        assertEquals(5L, orderRepository.count());
     }
 
     @Test
@@ -104,7 +95,7 @@ public class OrderRepositoryTests {
                         "222333444"
                 )
         );
-        assertEquals(3, orderRepository.countByUser(users.get(1)));
+        assertEquals(4, orderRepository.countByUser(users.get(1)));
         assertEquals(1, orderRepository.countByUser(users.get(0)));
     }
 

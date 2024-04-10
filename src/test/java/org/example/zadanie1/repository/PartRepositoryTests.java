@@ -2,7 +2,6 @@ package org.example.zadanie1.repository;
 
 import jakarta.transaction.Transactional;
 import org.example.zadanie1.model.Part;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +29,6 @@ public class PartRepositoryTests {
                         new Part("Seat", new BigDecimal("100.25"), 5L)
                 )
         );
-    }
-
-    @AfterEach
-    public void cleanTable() {
-        partRepository.deleteAll();
     }
 
     @Test

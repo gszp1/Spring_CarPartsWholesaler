@@ -2,7 +2,6 @@ package org.example.zadanie1.repository;
 
 import jakarta.transaction.Transactional;
 import org.example.zadanie1.model.User;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +45,6 @@ public class UserRepositoryTests {
                         "555666777"
                 ))
         );
-    }
-
-    @AfterEach
-    public void cleanTable() {
-        userRepository.deleteAll();
     }
 
     @Test
